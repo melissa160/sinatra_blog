@@ -5,4 +5,11 @@ class Tag < ActiveRecord::Base
   has_many :publications
   # belongs_to :publications
   has_many :entries, through: :publications
+
+
+  def self.sanitize_tag_input(params)
+    params.split(',').map {|tag| tag.strip}
+  end
+
+
 end
